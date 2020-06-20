@@ -11,8 +11,8 @@ import pydig
 conn = None
 try:
     conn = psycopg2.connect(" user=acd dbname=acd ")
-except:
-    print ("I am unable to connect to the database")
+except Error as err:
+    print ("I am unable to connect to the database ", err)
     
 cur = conn.cursor()
 cur.execute("""SELECT netloc from cdn group by netloc""")
@@ -21,7 +21,11 @@ rows = cur.fetchall()
 for r in rows:
 
     netloc = r[0]
-    res = pydig.query(netloc, 'A')
+    try:
+        res = pydig.query(netloc, 'A')
+    except Error as err:
+        print ("Dig bailed out ", err)
+        
     for a_record in res:
         data = {}
         data['netloc'] = netloc
