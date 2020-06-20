@@ -10,8 +10,9 @@ class AddHeader:
 
     def response(self, flow):
         
+        conn = None
         try:
-            conn = psycopg2.connect(" host='localhost' ")
+            conn = psycopg2.connect(" user=acd dbname=acd ")
         except:
             print ("I am unable to connect to the database")
         
