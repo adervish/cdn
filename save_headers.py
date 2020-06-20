@@ -15,7 +15,7 @@ class AddHeader:
         except:
             print ("I am unable to connect to the database")
         
-        f = open("headers.log", "w")
+        f = open("headers.log", "a")
         #print (flow.request.url, file=f)
         headers = flow.response.headers 
         cdn = None
