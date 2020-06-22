@@ -22,16 +22,18 @@ class AddHeader:
         cdn = None
         for h in headers: 
             if h == 'x-cache':
-                cdn = headers[h];
+                x_cache = headers[h];
+            if h == 'x-served-by':
+                x_served_by = headers[h];
         cur = conn.cursor()
         url = urlparse(flow.request.url)
-        data = {'time':datetime.now().isoformat(), 'cdn':cdn, 'url':flow.request.url, 'netloc':url.netloc, 'size':str(len(flow.response.raw_content))}
+        data = {'time':datetime.now().isoformat(), 'x_cache':x_cache, 'url':flow.request.url, 'netloc':url.netloc, 'x_served_by':x_served_by, 'size':str(len(flow.response.raw_content))}
         
         #log to file 
         print(json.dumps(data), file=f)
         
         #insert to PG
-        cur.execute("""INSERT INTO cdn(t,cdn,url,netloc,size) VALUES (%(time)s, %(cdn)s, %(url)s, %(netloc)s, %(size)s)""", data)
+        cur.execute("""INSERT INTO cdn(t,x_cache,url,netloc,x_served_by,size) VALUES (%(time)s, %(x_cache)s, %(url)s, %(netloc)s, %(x_served_by)s, %(size)s)""", data)
         conn.commit()
                 #print ( "\t".join(data), file=f)
 
