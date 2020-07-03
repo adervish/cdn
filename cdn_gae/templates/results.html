@@ -1,0 +1,19 @@
+<!doctype html>
+<title>Results</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>Results</h1>
+  {% for tbl in tables %}
+    <h2>{{titles[loop.index]}}</h2>
+	<table>
+  {%for row in tbl%}
+     <tr>
+        {%for col in row%}
+          <td>{{col|safe}}</td>
+        {%endfor%}
+     </tr>
+  {%endfor%}
+</table>
+  {% endfor %}
+  
+</div>

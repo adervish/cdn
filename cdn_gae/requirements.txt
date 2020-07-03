@@ -1,0 +1,3 @@
+Flask==1.1.2
+haralyzer==1.8.0
+google-cloud-storage

@@ -1,0 +1,25 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <h1>What portion of traffic from www.amazon.com came from which CDN?</h1>
+ 
+ <P>
+Save a session for www.amazon.com and this tool will figure out what % of the traffic came from which CDN. Watch the video to see how to save a session file. 
+<p>
+The maximum size of a session file is 32mb, loading www.amazon.com with the cache clean seems to come it at half this, but if you browser around too much more, it is likely to get too big to process. 
+<p>
+It's important to switch Chrome to incognito mode so you get a clean cache. 
+<p>
+
+
+<section class="content">
+<form action="upload_file" class="form" method="POST" enctype="multipart/form-data">
+<input type="file" name="yourFileName" >
+<input type=submit>
+<form>
+</section>
+	
+<p>
+
+<h1>Instructions</h1>		
+<iframe src="https://player.vimeo.com/video/434834058" width="1024" height="1024" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
