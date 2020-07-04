@@ -1,0 +1,1 @@
+gsutil -m rsync  gs://cdninfolyzer.appspot.com/data ./data
