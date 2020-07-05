@@ -132,7 +132,7 @@ def do_list_files():
 @app.route('/results')
 def do_results():
     """display static results page"""
-    return render_template('results.html', title='Home')
+    return render_template('all_results.html', title='Home')
 
 if __name__ == '__main__':
     
